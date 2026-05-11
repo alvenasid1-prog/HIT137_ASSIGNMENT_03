@@ -2,6 +2,8 @@ import tkinter as tk
 
 class GameGUI:
     def __init__(self):
+        self.tk_right = None
+        self.tk_left = None
         self.root = tk.Tk()
         self.root.title("Spot the Difference")
         self.root.geometry("900x600") 
