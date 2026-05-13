@@ -27,7 +27,7 @@ class ImageProcessor:
         supported_formats (tuple): File extensions supported for loading.
     """
 
-    # Class-level constant: supported image file formats
+   
     SUPPORTED_FORMATS = (".jpg", ".jpeg", ".png", ".bmp")
 
     def __init__(self):
@@ -56,10 +56,7 @@ class ImageProcessor:
             return f"ImageProcessor — Image loaded: {w}x{h} pixels"
         return "ImageProcessor — No image loaded"
 
-    # ------------------------------------------------------------------
-    # Public Methods
-    # ------------------------------------------------------------------
-
+    
     def load_image(self, path):
         """
         Load an image from disk using OpenCV.
@@ -75,7 +72,7 @@ class ImageProcessor:
                            or None if loading fails.
         """
         try:
-            # Check the file extension is supported
+           
             lower_path = path.lower()
             if not any(lower_path.endswith(fmt) for fmt in self.SUPPORTED_FORMATS):
                 raise ValueError(
@@ -151,18 +148,16 @@ class ImageProcessor:
             if img is None:
                 raise ValueError("Cannot convert a None image to Tkinter format.")
 
-            # Step 1: Convert BGR (OpenCV) -> RGB (standard colour order)
+           
             rgb_image = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
-            # Step 2: Convert numpy array -> PIL Image
+       
             pil_image = Image.fromarray(rgb_image)
 
-            # Step 3: Resize to fit canvas while preserving aspect ratio
             pil_image = self._resize_with_aspect_ratio(
                 pil_image, canvas_width, canvas_height
             )
 
-            # Step 4: Convert PIL Image -> Tkinter PhotoImage
             tk_image = ImageTk.PhotoImage(pil_image)
             return tk_image
 
@@ -195,10 +190,7 @@ class ImageProcessor:
             return (w, h)
         return (0, 0)
 
-    # ------------------------------------------------------------------
-    # Private Helper Method
-    # ------------------------------------------------------------------
-
+    
     def _resize_with_aspect_ratio(self, pil_image, target_width, target_height):
         """
         Resize a PIL Image to fit within target dimensions without distortion.
@@ -216,10 +208,9 @@ class ImageProcessor:
         """
         original_width, original_height = pil_image.size
 
-        # Calculate scale factor to fit within the canvas
         scale_w = target_width / original_width
         scale_h = target_height / original_height
-        scale = min(scale_w, scale_h)  # Use the smaller scale to keep aspect ratio
+        scale = min(scale_w, scale_h)  
 
         new_width = int(original_width * scale)
         new_height = int(original_height * scale)
