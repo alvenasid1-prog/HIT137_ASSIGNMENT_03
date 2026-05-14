@@ -35,7 +35,7 @@ class DifferenceGame:
         self.root.configure(bg="#101010")
 
         # FIXED IMAGE PATH
-        self.file_path = "src/img.jpg"
+        self.file_path = "img.jpg"
 
         self.stats = GameStats()
 
