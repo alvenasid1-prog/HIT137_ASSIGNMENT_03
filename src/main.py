@@ -34,7 +34,7 @@ class DifferenceGame:
 
         self.gui = GameGUI()
 
-        self.file_path = "src/img.jpg"
+        self.file_path = "img.jpg"
 
         self.stats = GameStats()
 
